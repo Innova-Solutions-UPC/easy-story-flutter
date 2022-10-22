@@ -1,5 +1,5 @@
 import 'package:easy_story_flutter/iam/presentation/sign_in/login_screen_detail.dart';
-import 'package:easy_story_flutter/publishing/writing/presentation/screens/write_publishing_screen_detail.dart';
+//import 'package:easy_story_flutter/publishing/writing/presentation/screens/write_publishing_screen_detail.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -21,11 +21,11 @@ class RouteGenerator {
         // You can also throw an exception while in development.
         return _errorRoute();
       case '/publishing-create':
-        if (args is String) {
-          return MaterialPageRoute(
-            builder: (_) => WritePublishingScreenDetail(),
-          );
-        }
+        // if (args is String) {
+        //   return MaterialPageRoute(
+        //     builder: (_) => WritePublishingScreenDetail(),
+        //   );
+        // }
 
         return _errorRoute();
       default:
