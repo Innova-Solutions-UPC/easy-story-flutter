@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:easy_story_flutter/publishing/application/write_service.dart';
+import 'package:easy_story_flutter/publishing/application/publishing_service.dart';
 import './write_bloc.dart';
 
 class WriteDetailBloc extends Bloc<WriteDetailEvent, WriteDetailState> {
   WriteDetailBloc({required this.writeService})
       : super(InitialWriteDetailState());
 
-  final WriteService writeService;
+  final PublishingService writeService;
 
   @override
   WriteDetailState get initialState => InitialWriteDetailState();

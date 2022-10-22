@@ -1,17 +1,17 @@
 import 'package:easy_story_flutter/publishing/infrastructure/repositories/write_repository.dart';
 
-import '../domain/entities/write_post.dart';
+import '../domain/entities/publishing_post.dart';
 
-class WriteService {
-  const WriteService({
+class PublishingService {
+  const PublishingService({
     required this.repository,
   });
   final WriteRepository repository;
-  Future<String> create_publishing(WritePost writePost) {
+  Future<String> create_publishing(PublishingPost writePost) {
     return repository.create_publishing(writePost);
   }
 
-  Future<String> edit_publishing(WritePost editPost) {
+  Future<String> edit_publishing(PublishingPost editPost) {
     return repository.update_publishing(editPost);
   }
 }

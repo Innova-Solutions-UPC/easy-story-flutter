@@ -1,6 +1,6 @@
-import 'package:easy_story_flutter/publishing/domain/entities/write_post.dart';
+import 'package:easy_story_flutter/publishing/domain/entities/publishing_post.dart';
 
-class WriteModel extends WritePost {
+class WriteModel extends PublishingPost {
   WriteModel({
     required String id,
     required String title,

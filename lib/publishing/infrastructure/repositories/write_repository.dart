@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:easy_story_flutter/common/platform/connectivity.dart';
-import 'package:easy_story_flutter/publishing/domain/entities/write_post.dart';
-import 'package:easy_story_flutter/publishing/domain/interfaces/write_interface.dart';
+import 'package:easy_story_flutter/publishing/domain/entities/publishing_post.dart';
+import 'package:easy_story_flutter/publishing/domain/interfaces/publishing_interface.dart';
 import 'package:easy_story_flutter/publishing/infrastructure/data_sources/write_local_data_provider.dart';
 import 'package:easy_story_flutter/publishing/infrastructure/data_sources/write_remote_data_provider.dart';
 import 'package:http/http.dart' as http;
@@ -24,7 +24,7 @@ class WriteRepository implements WriteInterface {
   final String url = "https://easy-story-api.onrender.com/v1/posts";
 
   @override
-  Future<String> create_publishing(WritePost writePost) async {
+  Future<String> create_publishing(PublishingPost writePost) async {
     final pref = await SharedPreferences.getInstance();
     final String? token = pref.getString('token');
 
@@ -63,7 +63,7 @@ class WriteRepository implements WriteInterface {
   }
 
   @override
-  Future<String> update_publishing(WritePost editPost) async {
+  Future<String> update_publishing(PublishingPost editPost) async {
     final pref = await SharedPreferences.getInstance();
     final String? token = pref.getString('token');
     WriteModel writeModel = new WriteModel(

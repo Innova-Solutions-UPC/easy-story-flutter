@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class WritePost extends Equatable {
-  WritePost({
+class PublishingPost extends Equatable {
+  PublishingPost({
     required this.id,
     required this.title,
     required this.description,
