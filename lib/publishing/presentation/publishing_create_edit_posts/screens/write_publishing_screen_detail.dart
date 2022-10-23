@@ -1,4 +1,5 @@
 //import 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/widgets/publishing_description_field.dart';
+import 'package:easy_story_flutter/common/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/publishing_widgets.dart';
@@ -26,6 +27,11 @@ class _WritePublishingScreenDetailState
     return Container(
       decoration: SignInBackgroundImage(),
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("Create your own Stories"),
+          backgroundColor: Colors.transparent,
+        ),
+        drawer: EasyStoryDrawerMenu(),
         backgroundColor: Colors.transparent,
         floatingActionButton: PublishingButtonCreate(
           context,
@@ -52,13 +58,6 @@ class _WritePublishingScreenDetailState
                   children: [
                     Container(
                       padding: EdgeInsets.only(left: 35, top: 35),
-                      child: Text(
-                        'Write your own Story',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 104, 102, 102),
-                          fontSize: 25,
-                        ),
-                      ),
                     ),
                     PublishingTitleField(title),
                     SizedBox(
