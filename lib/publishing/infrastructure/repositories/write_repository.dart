@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:easy_story_flutter/common/platform/connectivity.dart';
 import 'package:easy_story_flutter/publishing/domain/entities/publishing_post.dart';
@@ -24,35 +25,45 @@ class WriteRepository implements WriteInterface {
   final String url = "https://easy-story-api.onrender.com/v1/posts";
 
   @override
-  Future<String> create_publishing(PublishingPost writePost) async {
+  Future<String> create_publishing(
+    String title,
+    String description,
+    String content,
+    String hashtags,
+    String image,
+    String status,
+  ) async {
     final pref = await SharedPreferences.getInstance();
-    final String? token = pref.getString('token');
+    var token = await pref.getString('token');
 
     if (connectivity.isConnected) {
       try {
-        WriteModel writeModel = new WriteModel(
-            id: writePost.id,
-            title: writePost.title,
-            description: writePost.description,
-            status: writePost.status,
-            content: writePost.content,
-            image: writePost.image,
-            hashtags: writePost.hashtags);
-        var response = http.post(Uri.parse(url),
-            headers: <String, String>{
-              'Content-Type': 'application/json; charset=UTF-8',
-              'Authorization': 'Bearer ${pref.getString('token')}',
-            },
-            body: jsonEncode(<String, dynamic>{
-              "title": writeModel.title,
-              "description": writeModel.description,
-              "status": writeModel.status,
-              "content": writeModel.content,
+        print('hi');
+        var data = hashtags.split(',').toList();
+
+        var response = await http.post(
+          Uri.parse(url + ''),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization': 'Bearer ${token}',
+          },
+          body: jsonEncode(
+            <String, dynamic>{
+              "title": title,
+              "description": description,
+              "status": status,
+              "content": content,
               "image":
                   "https://www.nationalgeographic.com.es/medio/2018/02/27/perros__1280x720.jpg",
-              "hashtags": writeModel.hashtags
-            }));
-        return response.toString();
+              "hashtags": data,
+            },
+          ),
+        );
+        var value_data = jsonDecode(response.body);
+
+        print(value_data);
+        print(value_data["content"]);
+        return response.body.toString();
       } catch (e) {
         print(e);
         return ServerException()();

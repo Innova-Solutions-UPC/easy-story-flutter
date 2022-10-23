@@ -7,8 +7,16 @@ class PublishingService {
     required this.repository,
   });
   final WriteRepository repository;
-  Future<String> create_publishing(PublishingPost writePost) {
-    return repository.create_publishing(writePost);
+  Future<String> create_publishing(String title, String description,
+      String content, String hashtags, String image, String status) async {
+    return repository.create_publishing(
+      title,
+      description,
+      content,
+      hashtags,
+      image,
+      status,
+    );
   }
 
   Future<String> edit_publishing(PublishingPost editPost) {
