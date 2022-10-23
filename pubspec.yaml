@@ -13,6 +13,7 @@ dependencies:
   equatable: ^2.0.5
   http: ^0.13.5
   shared_preferences: ^2.0.15
+  enum_to_string: ^2.0.1
 
 
 dev_dependencies:
@@ -22,3 +23,5 @@ flutter:
   uses-material-design: true
   assets:
     - lib/iam/assets/sign-in.png
+    - lib/publishing/assets/publishing_background_image.jpg
+    - lib/common/assets/reading.jpg
