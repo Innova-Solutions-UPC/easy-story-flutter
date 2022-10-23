@@ -22,19 +22,28 @@ class IamRepository implements IamInterface {
   final String url = "https://easy-story-api.onrender.com/v1/auth";
 
   @override
-  Future<String> sign_in(User user) async {
+  Future<String> sign_in(String email, String password) async {
     if (connectivity.isConnected) {
       try {
-        var response = await http.post(Uri.parse(url + '/login'),
-            headers: <String, String>{
-              'Content-Type': 'application/json; charset=UTF-8',
+        var response = await http.post(
+          Uri.parse(url + '/login'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(
+            <String, dynamic>{
+              "email": email,
+              "password": password,
             },
-            body: jsonEncode(<String, dynamic>{
-              "email": user.email,
-              "password": user.password,
-              "rememberMe": true,
-              "token": "string"
-            }));
+          ),
+        );
+        var value_data = jsonDecode(response.body);
+        final pref = await SharedPreferences.getInstance();
+        pref.setString('token', value_data['tokens']['accessToken']);
+        pref.setInt('user_id', value_data['authenticatedUser']['id']);
+        pref.setString('email', value_data['authenticatedUser']['email']);
+        pref.setBool('verified', value_data['authenticatedUser']['verified']);
+        print(response.statusCode);
         return response.body.toString();
       } catch (e) {
         print(e);

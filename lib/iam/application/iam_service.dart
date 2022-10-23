@@ -13,7 +13,7 @@ class IamService {
     return repository.sign_up(user);
   }
 
-  Future<String> sign_in(User user) async {
-    return repository.sign_in(user);
+  Future<String> sign_in(String email, String password) async {
+    return repository.sign_in(email, password);
   }
 }

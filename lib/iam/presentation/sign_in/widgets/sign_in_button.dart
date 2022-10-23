@@ -13,22 +13,9 @@ Widget SignInButton(context, String email, String password) {
         color: Colors.white,
         onPressed: () async {
           try {
-            User user = new User(
-                id: 'id',
-                username: 'username',
-                email: email,
-                password: password,
-                firstName: 'firstName',
-                lastName: 'lastName',
-                bio: 'bio',
-                verified: false);
-
             IamApi iamApi = new IamApi();
-            var data = await iamApi.login(user);
-            var value_data = jsonDecode(data);
-            final pref = await SharedPreferences.getInstance();
-            pref.setString('token', value_data['tokens']['accessToken']);
-            Navigator.pushNamed(context, '/create-publishing');
+            await iamApi.login(email, password);
+            Navigator.pushNamed(context, '/write-publish');
           } catch (e) {
             return ServerException()();
           }

@@ -3,5 +3,5 @@ import 'package:http/http.dart' as http;
 
 abstract class IamInterface {
   Future<User> sign_up(User user);
-  Future<String> sign_in(User user);
+  Future<String> sign_in(String email, String password);
 }

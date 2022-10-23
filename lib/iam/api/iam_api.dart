@@ -10,7 +10,7 @@ class IamApi {
     return iamService.sign_up(user);
   }
 
-  Future<String> login(User user) async {
-    return iamService.sign_in(user);
+  Future<String> login(String email, String password) async {
+    return iamService.sign_in(email, password);
   }
 }
