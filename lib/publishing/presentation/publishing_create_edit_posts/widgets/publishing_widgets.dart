@@ -7,3 +7,4 @@ export 'package:easy_story_flutter/publishing/presentation/publishing_create_edi
 export 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/widgets/publishing_description_field.dart';
 export 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/widgets/publishing_widgets.dart';
 export 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/widgets/publishing_button_create.dart';
+export 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/widgets/publishing_button_edit.dart';

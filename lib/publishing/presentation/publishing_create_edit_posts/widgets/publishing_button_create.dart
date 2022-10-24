@@ -29,7 +29,7 @@ Widget PublishingButtonCreate(
             image,
             status,
           );
-          Navigator.pushNamed(context, '/aaaad');
+          Navigator.pushNamed(context, '/user-posts');
         } catch (e) {
           print(e);
           return ServerException()();
