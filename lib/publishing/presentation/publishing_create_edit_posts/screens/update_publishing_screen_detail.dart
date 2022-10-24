@@ -1,19 +1,19 @@
-//import 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/widgets/publishing_description_field.dart';
-import 'package:easy_story_flutter/common/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
-
+import '../../../../common/widgets/drawer_widget.dart';
 import '../widgets/publishing_widgets.dart';
 
-class WritePublishingScreenDetail extends StatefulWidget {
-  WritePublishingScreenDetail({Key? key}) : super(key: key);
+class UpdatePublishingScreenDetail extends StatefulWidget {
+  UpdatePublishingScreenDetail({Key? key, required this.publishId})
+      : super(key: key);
+  final int publishId;
 
   @override
-  State<WritePublishingScreenDetail> createState() =>
-      _WritePublishingScreenDetailState();
+  State<UpdatePublishingScreenDetail> createState() =>
+      UpdatePublishingScreenDetailState();
 }
 
-class _WritePublishingScreenDetailState
-    extends State<WritePublishingScreenDetail> {
+class UpdatePublishingScreenDetailState
+    extends State<UpdatePublishingScreenDetail> {
   TextEditingController title = new TextEditingController();
   TextEditingController description = new TextEditingController();
   TextEditingController content = new TextEditingController();
@@ -28,18 +28,19 @@ class _WritePublishingScreenDetailState
       decoration: SignInBackgroundImage(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Create your own Stories"),
+          title: Text("Edit this your own Stories"),
           backgroundColor: Colors.transparent,
         ),
         drawer: EasyStoryDrawerMenu(),
         backgroundColor: Colors.transparent,
-        floatingActionButton: PublishingButtonCreate(
+        floatingActionButton: PublishingButtonEdit(
           context,
           title.text.trim(),
           description.text.trim(),
           content.text.trim(),
           hashtags.text.trim(),
           urlImage,
+          widget.publishId.toString(),
         ),
         body: Stack(
           children: [

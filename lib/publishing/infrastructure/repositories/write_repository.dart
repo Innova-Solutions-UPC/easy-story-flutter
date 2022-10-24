@@ -22,7 +22,7 @@ class WriteRepository implements WriteInterface {
   final Connectivity connectivity;
   final WriteLocalDataProvider? writeLocalDataProvider;
   final WriteRemoteDataProvider? writeRemoteDataProvider;
-  final String url = "https://easy-story-api.onrender.com/v1/posts";
+  final String url = "https://easy-story-api.onrender.com/v1/";
 
   @override
   Future<String> create_publishing(
@@ -42,7 +42,7 @@ class WriteRepository implements WriteInterface {
         var data = hashtags.split(',').toList();
 
         var response = await http.post(
-          Uri.parse(url + ''),
+          Uri.parse(url + 'posts'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
             'Authorization': 'Bearer ${token}',
@@ -74,26 +74,75 @@ class WriteRepository implements WriteInterface {
   }
 
   @override
-  Future<String> update_publishing(PublishingPost editPost) async {
+  Future<String> update_publishing(
+    String title,
+    String description,
+    String content,
+    String hashtags,
+    String image,
+    String status,
+    String publishId,
+  ) async {
     final pref = await SharedPreferences.getInstance();
     final String? token = pref.getString('token');
-    WriteModel writeModel = new WriteModel(
-        id: editPost.id,
-        title: editPost.title,
-        description: editPost.description,
-        status: editPost.status,
-        content: editPost.content,
-        image: editPost.image,
-        hashtags: editPost.hashtags);
     if (connectivity.isConnected) {
       try {
-        return "hello";
+        var data = hashtags.split(',').toList();
+
+        var response = await http.patch(
+          Uri.parse(url + 'posts/' + publishId),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization': 'Bearer ${token}',
+          },
+          body: jsonEncode(
+            <String, dynamic>{
+              "title": title,
+              "description": description,
+              "status": status,
+              "content": content,
+              "image":
+                  "https://www.nationalgeographic.com.es/medio/2018/02/27/perros__1280x720.jpg",
+              "hashtags": data,
+            },
+          ),
+        );
+        var value_data = jsonDecode(response.body);
+
+        print(value_data);
+        print(value_data["items"]);
+        return response.body.toString();
       } catch (e) {
         print(e);
         return ServerException()();
       }
     } else {
       throw Exception('error when trying to login');
+    }
+  }
+
+  @override
+  Future<dynamic> get_all_my_posts() async {
+    final pref = await SharedPreferences.getInstance();
+    final String? token = pref.getString('token');
+    if (connectivity.isConnected) {
+      try {
+        //https://easy-story-api.onrender.com/v1/user-posts?page=1&limit=20
+        var response = await http.get(
+          Uri.parse(url + 'user-posts?page=1&limit=20'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization': 'Bearer ${token}',
+          },
+        );
+
+        return jsonDecode(response.body.toString());
+      } catch (e) {
+        print(e);
+        return ServerException()();
+      }
+    } else {
+      throw Exception('error while try to get users-posts-data');
     }
   }
 }
