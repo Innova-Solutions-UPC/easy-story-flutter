@@ -15,7 +15,7 @@ Widget SignInButton(context, String email, String password) {
           try {
             IamApi iamApi = new IamApi();
             await iamApi.login(email, password);
-            Navigator.pushNamed(context, '/write-publish');
+            Navigator.pushNamed(context, '/user-posts');
           } catch (e) {
             return ServerException()();
           }
