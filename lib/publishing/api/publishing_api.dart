@@ -16,4 +16,28 @@ class PublishingApi {
       status,
     );
   }
+
+  Future<String> edit_publishing(
+    String title,
+    String description,
+    String content,
+    String hashtags,
+    String image,
+    String status,
+    String publishId,
+  ) async {
+    return publishingService.edit_publishing(
+      title,
+      description,
+      content,
+      hashtags,
+      image,
+      status,
+      publishId,
+    );
+  }
+
+  Future<dynamic> get_all_my_posts() async {
+    return publishingService.get_all_my_posts();
+  }
 }

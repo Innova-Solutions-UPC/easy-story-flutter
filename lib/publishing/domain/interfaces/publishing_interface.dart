@@ -9,5 +9,14 @@ abstract class WriteInterface {
     String image,
     String status,
   );
-  Future<String> update_publishing(PublishingPost editPost);
+  Future<String> update_publishing(
+    String title,
+    String description,
+    String content,
+    String hashtags,
+    String image,
+    String status,
+    String publishId,
+  );
+  Future<dynamic> get_all_my_posts();
 }
