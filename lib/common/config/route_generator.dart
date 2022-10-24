@@ -1,4 +1,5 @@
 import 'package:easy_story_flutter/iam/presentation/sign_in/login_screen_detail.dart';
+import 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/screens/update_publishing_screen_detail.dart';
 import 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/screens/write_publishing_screen_detail.dart';
 import 'package:easy_story_flutter/publishing/presentation/publishing_lists_posts/screens/publishing_user_posts.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class RouteGenerator {
       case '/edit-publishing':
         try {
           return MaterialPageRoute(
-              builder: (_) => WritePublishingScreenDetail());
+              builder: (_) => UpdatePublishingScreenDetail(publishId: 22));
         } catch (e) {
           // If args is not of the correct type, return an error page.
           // You can also throw an exception while in development.
