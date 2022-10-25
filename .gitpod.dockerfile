@@ -1,4 +1,4 @@
-FROM gitpod/innovasolut-easystoryfl-hx6yi1r0mt0
+FROM gitpod/workspace-full
 
 
 
