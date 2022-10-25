@@ -1,4 +1,5 @@
-FROM gitpod/innovasolut-easystoryfl-o4ty9sjxipk
+FROM gitpod/innovasolut-easystoryfl-hx6yi1r0mt0
+
 
 
 USER root
