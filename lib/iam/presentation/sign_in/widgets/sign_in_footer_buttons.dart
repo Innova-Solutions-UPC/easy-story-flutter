@@ -24,7 +24,7 @@ Widget SignInFooterButtons(context) {
       ElevatedButton(
         onPressed: () {},
         child: Text(
-          'Did you forget your password?',
+          'Forgot Password',
           textAlign: TextAlign.left,
           style: TextStyle(color: Colors.white, fontSize: 15),
         ),
