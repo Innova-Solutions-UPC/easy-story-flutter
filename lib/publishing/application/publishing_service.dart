@@ -1,3 +1,4 @@
+import 'package:easy_story_flutter/publishing/infrastructure/models/write_model.dart';
 import 'package:easy_story_flutter/publishing/infrastructure/repositories/write_repository.dart';
 
 import '../domain/entities/publishing_post.dart';
@@ -46,6 +47,14 @@ class PublishingService {
   }
 
   Future<dynamic> get_all_my_posts() async {
-    return repository.get_all_my_posts();
+    return repository.get_all_the_posts();
+  }
+
+  Future<List<WriteModel>> getPosts() async {
+    return repository.getPosts();
+  }
+
+  Future<WriteModel> getAPost(String slug) async {
+    return repository.getAPost(slug);
   }
 }

@@ -2,13 +2,15 @@ import 'package:easy_story_flutter/publishing/domain/entities/publishing_post.da
 
 class WriteModel extends PublishingPost {
   WriteModel({
-    required String id,
+    required int id,
     required String title,
     required String description,
     required String status,
     required String content,
     required String image,
-    required List<String> hashtags,
+    required String slug,
+    required int authorId,
+    required List<dynamic> hashtags,
   }) : super(
           id: id,
           title: title,
@@ -17,6 +19,8 @@ class WriteModel extends PublishingPost {
           content: content,
           image: image,
           hashtags: hashtags,
+          slug: slug,
+          authorId: authorId,
         );
 
   factory WriteModel.fromJson(Map<String, dynamic> json) {
@@ -27,7 +31,9 @@ class WriteModel extends PublishingPost {
       status: json["status"],
       content: json["content"],
       image: json["image"],
-      hashtags: List<String>.from(json["hashtags"].map((x) => x)),
+      slug: json['slug'],
+      authorId: json['author']['id'],
+      hashtags: List<dynamic>.from(json["hashtags"].map((x) => x)),
     );
   }
 
@@ -39,6 +45,8 @@ class WriteModel extends PublishingPost {
       "status": status,
       "content": content,
       "image": image,
+      "slug": slug,
+      'author': authorId,
       "hashtags": List<dynamic>.from(hashtags.map((x) => x)),
     };
   }
