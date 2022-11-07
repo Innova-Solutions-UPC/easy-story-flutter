@@ -1,12 +1,16 @@
 import 'package:easy_story_flutter/iam/presentation/sign_in/login_screen_detail.dart';
 import 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/screens/write_publishing_screen_detail.dart';
+import 'package:easy_story_flutter/publishing/presentation/publishing_lists_posts/screens/publishing_user_post_details.dart';
 import 'package:easy_story_flutter/publishing/presentation/publishing_lists_posts/screens/publishing_user_posts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+
+import '../../publishing/presentation/publishing_create_edit_posts/screens/update_publishing_screen_detail.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     // Getting arguments passed in while calling Navigator.pushNamed
-    final args = settings.arguments;
+    final arguments = settings;
 
     switch (settings.name) {
       case '/':
@@ -33,7 +37,8 @@ class RouteGenerator {
       case '/edit-publishing':
         try {
           return MaterialPageRoute(
-              builder: (_) => WritePublishingScreenDetail());
+              builder: (_) => UpdatePublishingScreenDetail(),
+              settings: arguments);
         } catch (e) {
           // If args is not of the correct type, return an error page.
           // You can also throw an exception while in development.
@@ -45,6 +50,15 @@ class RouteGenerator {
         } catch (e) {
           // If args is not of the correct type, return an error page.
           // You can also throw an exception while in development.
+          return _errorRoute();
+        }
+      case '/details-publishing':
+        try {
+          return MaterialPageRoute(
+            builder: (_) => PublishingUserPostDetails(),
+            settings: arguments,
+          );
+        } catch (e) {
           return _errorRoute();
         }
       default:
@@ -65,4 +79,9 @@ class RouteGenerator {
       );
     });
   }
+}
+
+class ScreenEditArguments {
+  final int publishId;
+  ScreenEditArguments(this.publishId);
 }
