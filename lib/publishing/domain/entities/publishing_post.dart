@@ -9,15 +9,19 @@ class PublishingPost extends Equatable {
     required this.content,
     required this.image,
     required this.hashtags,
+    required this.slug,
+    required this.authorId,
   });
 
-  final String id;
+  final int id;
   final String title;
   final String description;
   final String status;
   final String content;
   final String image;
-  final List<String> hashtags;
+  final String slug;
+  final int authorId;
+  final List<dynamic> hashtags;
 
   @override
   List<dynamic> get props => <dynamic>[

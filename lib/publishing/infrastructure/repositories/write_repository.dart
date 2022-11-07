@@ -122,14 +122,15 @@ class WriteRepository implements WriteInterface {
   }
 
   @override
-  Future<dynamic> get_all_my_posts() async {
+  Future<dynamic> get_all_the_posts() async {
     final pref = await SharedPreferences.getInstance();
     final String? token = pref.getString('token');
+    //https://easy-story-api.onrender.com/v1/posts?page=1&limit=20
     if (connectivity.isConnected) {
       try {
-        //https://easy-story-api.onrender.com/v1/user-posts?page=1&limit=20
-        var response = await http.get(
-          Uri.parse(url + 'user-posts?page=1&limit=20'),
+        //feed
+        final response = await http.get(
+          Uri.parse(url + 'posts?page=1&limit=20'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
             'Authorization': 'Bearer ${token}',
@@ -144,5 +145,48 @@ class WriteRepository implements WriteInterface {
     } else {
       throw Exception('error while try to get users-posts-data');
     }
+  }
+
+  @override
+  Future<List<WriteModel>> getPosts() async {
+    final pref = await SharedPreferences.getInstance();
+    final String? token = pref.getString('token');
+    final int? userId = pref.getInt('user_id');
+    final response = await http.get(
+      Uri.parse(url + 'posts?page=1&limit=20&author=${userId.toString()}'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer ${token}',
+      },
+    );
+    if (response.statusCode == HttpStatus.ok) {
+      var list = json.decode(response.body)["items"] as List;
+      print("La lista" + list.toString());
+      var a = list
+          .map((json) => WriteModel.fromJson(json))
+          .where((element) => element.id == userId)
+          .toList();
+
+      print(" " + a.toString());
+      return list.map((json) => WriteModel.fromJson(json)).toList();
+    } else {
+      throw Exception('Failed request');
+    }
+  }
+
+  @override
+  Future<WriteModel> getAPost(String slug) async {
+    final pref = await SharedPreferences.getInstance();
+    final String? token = pref.getString('token');
+    final response = await http.get(
+      Uri.parse(url + 'posts/' + slug),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer ${token}',
+      },
+    );
+    var body = json.decode(response.body);
+
+    return WriteModel.fromJson(body);
   }
 }
