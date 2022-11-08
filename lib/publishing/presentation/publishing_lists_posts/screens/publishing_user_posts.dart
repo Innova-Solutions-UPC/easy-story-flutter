@@ -4,6 +4,7 @@ import 'package:easy_story_flutter/publishing/infrastructure/models/write_model.
 import 'package:easy_story_flutter/publishing/presentation/publishing_lists_posts/widgets/publishing_item.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../common/widgets/drawer_widget.dart';
 import '../../../../iam/presentation/sign_in/widgets/sign_in_background_image.dart';
 
 class PublishingUserPosts extends StatefulWidget {
@@ -41,7 +42,7 @@ class _PublishingUserPostsState extends State<PublishingUserPosts> {
         title: Text("Your Stories"),
         backgroundColor: Colors.transparent,
       ),
-      //drawer: EasyStoryDrawerMenu(),
+      drawer: EasyStoryDrawerMenu(),
       body: Container(
         decoration: SignInBackgroundImage(),
         child: FutureBuilder<List<WriteModel>>(
