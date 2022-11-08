@@ -3,6 +3,8 @@ import 'package:easy_story_flutter/publishing/api/publishing_api.dart';
 import 'package:easy_story_flutter/publishing/infrastructure/models/write_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../common/widgets/drawer_widget.dart';
+
 //import '../../../../common/widgets/drawer_widget.dart';
 
 class PublishingUserPostDetails extends StatefulWidget {
@@ -42,7 +44,7 @@ class _PublishingUserPostDetailsState extends State<PublishingUserPostDetails> {
         title: Text(""),
         backgroundColor: Colors.transparent,
       ),
-      //drawer: EasyStoryDrawerMenu(),
+      drawer: EasyStoryDrawerMenu(),
       body: Container(
         decoration: SignInBackgroundImage(),
         child: FutureBuilder<WriteModel>(
