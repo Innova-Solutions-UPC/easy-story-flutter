@@ -11,12 +11,14 @@ class EasyStoryDrawerMenu extends StatelessWidget {
           _buildEasyStoryDrawerItem(
               icon: Icons.home,
               text: 'Feed',
-              onTap: () => {Navigator.pushNamed(context, '/user-posts')}),
+              onTap: () => {
+                    Navigator.pushNamed(context, '/user-posts'),
+                  }),
           _buildEasyStoryDrawerItem(
               icon: Icons.account_circle,
               text: 'Profile',
               onTap: () => {
-                    //Navigator.pushReplacementNamed(context, MyApp.profile)
+                    Navigator.pushNamed(context, '/profile'),
                   }),
           _buildEasyStoryDrawerItem(
               icon: Icons.movie,
