@@ -2,8 +2,9 @@ import 'package:easy_story_flutter/profile/api/profile_api.dart';
 import 'package:easy_story_flutter/profile/infrastructure/models/profile_model.dart';
 import 'package:easy_story_flutter/profile/presentation/profile/widgets/profile_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../common/widgets/drawer_widget.dart';
+import '../../../../common/widgets/drawer_widget.dart';
 
 class ProfileScreenDetail extends StatefulWidget {
   @override
@@ -47,7 +48,9 @@ class ProfileScreenDetailState extends State<ProfileScreenDetail>
                             child: IconButton(
                               color: Colors.white,
                               icon: const Icon(Icons.logout),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/user-posts');
+                              },
                             ),
                           ),
                           SizedBox(
@@ -69,7 +72,15 @@ class ProfileScreenDetailState extends State<ProfileScreenDetail>
                             child: IconButton(
                               color: Colors.white,
                               icon: const Icon(Icons.edit),
-                              onPressed: () {},
+                              onPressed: () async {
+                                final prefs =
+                                    await SharedPreferences.getInstance();
+                                final String? userName =
+                                    prefs.getString('username');
+
+                                Navigator.pushNamed(context, '/edit-profile',
+                                    arguments: userName);
+                              },
                             ),
                           ),
                         ],
