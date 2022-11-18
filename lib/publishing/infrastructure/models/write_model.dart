@@ -23,7 +23,7 @@ class WriteModel extends PublishingPost {
           authorId: authorId,
         );
 
-  factory WriteModel.fromJson(Map<String, dynamic> json) {
+  factory WriteModel.fromJson(Map<dynamic, dynamic> json) {
     return WriteModel(
       id: json['id'],
       title: json["title"],
