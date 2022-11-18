@@ -4,8 +4,6 @@ import 'package:easy_story_flutter/profile/presentation/profile/widgets/profile_
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../../common/widgets/drawer_widget.dart';
-
 class ProfileScreenDetail extends StatefulWidget {
   @override
   ProfileScreenDetailState createState() => new ProfileScreenDetailState();
