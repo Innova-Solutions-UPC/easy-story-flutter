@@ -1,8 +1,3 @@
-import 'package:easy_story_flutter/common/widgets/drawer_widget.dart';
-import 'package:easy_story_flutter/profile/presentation/profile/widgets/profile_bio_field.dart';
-import 'package:easy_story_flutter/profile/presentation/profile/widgets/profile_email_field.dart';
-import 'package:easy_story_flutter/profile/presentation/profile/widgets/profile_phone_field.dart';
-import 'package:easy_story_flutter/profile/presentation/profile/widgets/profile_username_field.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_story_flutter/profile/presentation/profile/widgets/profile_widgets.dart';
 
@@ -26,7 +21,6 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
       decoration: ProfileBackgroundImage(),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        drawer: EasyStoryDrawerMenu(),
         appBar: AppBar(
           title: Text("Edit Your Profile"),
           backgroundColor: Colors.transparent,
