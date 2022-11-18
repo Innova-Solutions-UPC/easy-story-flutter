@@ -5,6 +5,7 @@ import 'package:easy_story_flutter/publishing/presentation/publishing_lists_post
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/drawer_widget.dart';
+import '../../../../common/widgets/widgets.dart';
 import '../../../../iam/presentation/sign_in/widgets/sign_in_background_image.dart';
 
 class PublishingUserPosts extends StatefulWidget {
@@ -16,6 +17,7 @@ class PublishingUserPosts extends StatefulWidget {
 
 class _PublishingUserPostsState extends State<PublishingUserPosts> {
   late Future<List<WriteModel>> posts;
+
   @override
   void initState() {
     super.initState();
@@ -38,11 +40,6 @@ class _PublishingUserPostsState extends State<PublishingUserPosts> {
           Icons.add,
         ),
       ),
-      appBar: AppBar(
-        title: Text("Your Stories"),
-        backgroundColor: Colors.transparent,
-      ),
-      drawer: EasyStoryDrawerMenu(),
       body: Container(
         decoration: SignInBackgroundImage(),
         child: FutureBuilder<List<WriteModel>>(
