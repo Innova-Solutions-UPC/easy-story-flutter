@@ -130,7 +130,22 @@ class ProfileScreenDetailState extends State<ProfileScreenDetail>
                               } else if (snapshot.hasError) {
                                 return Text(snapshot.error.toString());
                               } else {
-                                return CircularProgressIndicator();
+                                return Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.5,
+                                  child: Center(
+                                    child: SizedBox(
+                                      width: 100,
+                                      height: 100,
+                                      child: CircularProgressIndicator(
+                                        backgroundColor: Colors.purple,
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ),
+                                );
                               }
                             },
                           )),
