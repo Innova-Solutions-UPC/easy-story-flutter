@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../publishing/presentation/publishing_create_edit_posts/screens/update_publishing_screen_detail.dart';
+import '../widgets/bottom_navigation_bar.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -80,8 +81,19 @@ class RouteGenerator {
         } catch (e) {
           return _errorRoute();
         }
+
+      case '/bottom-navigation-states':
+        try {
+          return MaterialPageRoute(
+            builder: (_) => BottomNavBar(),
+            settings: arguments,
+          );
+        } catch (e) {
+          return _errorRoute();
+        }
+
       default:
-        // If there is no such named route in the switch statement, e.g. /third
+        // the last option
         return _errorRoute();
     }
   }
@@ -100,7 +112,18 @@ class RouteGenerator {
   }
 }
 
-class ScreenEditArguments {
-  final int publishId;
-  ScreenEditArguments(this.publishId);
+class Error extends StatelessWidget {
+  const Error({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Error'),
+      ),
+      body: Center(
+        child: Text('ERROR'),
+      ),
+    );
+  }
 }
