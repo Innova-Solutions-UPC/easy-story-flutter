@@ -9,7 +9,8 @@ Widget PublishingItem(
   String content,
   String hashtags,
   String image,
-  int publishId,
+  String publishId,
+  String slug,
 ) {
   return Card(
     elevation: 1.0,
@@ -22,7 +23,9 @@ Widget PublishingItem(
     child: Column(
       children: [
         Image.network(
-          image,
+          image.isEmpty
+              ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4vgxRDCfxDtQKPA7Q_-AuKsf44qb0LHcydDgRVOQB&s"
+              : image,
           fit: BoxFit.fill,
         ),
         ListTile(
@@ -33,16 +36,10 @@ Widget PublishingItem(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             IconButton(
-              onPressed: () {
-                //for future assignments use to bookmark.
-              },
-              icon: getIcon(false),
-            ),
-            IconButton(
               icon: Icon(Icons.edit),
               onPressed: () async {
                 Navigator.pushNamed(context, '/edit-publishing',
-                    arguments: publishId);
+                    arguments: int.parse(publishId));
               },
             ),
             IconButton(
@@ -51,7 +48,10 @@ Widget PublishingItem(
             ),
             IconButton(
               icon: Icon(Icons.info),
-              onPressed: () async {},
+              onPressed: () async {
+                Navigator.pushNamed(context, '/details-publishing',
+                    arguments: slug);
+              },
             )
           ],
         )

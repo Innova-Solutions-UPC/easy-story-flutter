@@ -1,4 +1,9 @@
 import 'package:easy_story_flutter/iam/iam.dart';
+import 'package:easy_story_flutter/profile/application/profile_service.dart';
+import 'package:easy_story_flutter/profile/infrastructure/data_sources/profile_local_data_provider.dart';
+import 'package:easy_story_flutter/profile/infrastructure/data_sources/profile_remote_data_provider.dart';
+import 'package:easy_story_flutter/profile/infrastructure/repositories/profile_repository.dart';
+import 'package:easy_story_flutter/profile/presentation/profile/bloc/profile_detail_bloc.dart';
 import 'package:easy_story_flutter/publishing/application/publishing_service.dart';
 import 'package:easy_story_flutter/publishing/infrastructure/data_sources/write_local_data_provider.dart';
 import 'package:easy_story_flutter/publishing/infrastructure/data_sources/write_remote_data_provider.dart';
@@ -10,10 +15,12 @@ final serviceLocator = GetIt.instance;
 
 // From Top To bottom
 Future<void> init() async {
-  // iam
+  //iam
   iamDependencies();
+  //publishing
   publishingDependencies();
-  // sales
+  //profile
+  profileDependencies();
 }
 
 Future<void> iamDependencies() async {
@@ -85,5 +92,39 @@ Future<void> publishingDependencies() async {
   );
   serviceLocator.registerLazySingleton(
     () => WriteRemoteDataProvider(),
+  );
+}
+
+//profile
+Future<void> profileDependencies() async {
+  // Presentation Layer - Blocs
+  serviceLocator.registerFactory(
+    () => ProfileDetailBloc(
+      profileService: serviceLocator(),
+    ),
+  );
+
+  // Application Layer - facades
+  serviceLocator.registerLazySingleton(
+    () => ProfileService(
+      repository: serviceLocator(),
+    ),
+  );
+
+  // Infrastructure Layer
+  // repositories
+  serviceLocator.registerLazySingleton(
+    () => ProfileRepository(
+      connectivity: serviceLocator(),
+      profileLocalDataProvider: serviceLocator(),
+      profileRemoteDataProvider: serviceLocator(),
+    ),
+  );
+  //data sources
+  serviceLocator.registerLazySingleton(
+    () => ProfileLocalDataProvider(),
+  );
+  serviceLocator.registerLazySingleton(
+    () => ProfileRemoteDataProvider(),
   );
 }

@@ -3,9 +3,7 @@ import '../../../../common/widgets/drawer_widget.dart';
 import '../widgets/publishing_widgets.dart';
 
 class UpdatePublishingScreenDetail extends StatefulWidget {
-  UpdatePublishingScreenDetail({Key? key, required this.publishId})
-      : super(key: key);
-  final int publishId;
+  UpdatePublishingScreenDetail({Key? key}) : super(key: key);
 
   @override
   State<UpdatePublishingScreenDetail> createState() =>
@@ -24,11 +22,12 @@ class UpdatePublishingScreenDetailState
 
   @override
   Widget build(BuildContext context) {
+    var arguments = ModalRoute.of(context)?.settings.arguments;
     return Container(
       decoration: SignInBackgroundImage(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Edit this your own Stories"),
+          title: Text("Edit this your own Stories "),
           backgroundColor: Colors.transparent,
         ),
         drawer: EasyStoryDrawerMenu(),
@@ -40,7 +39,7 @@ class UpdatePublishingScreenDetailState
           content.text.trim(),
           hashtags.text.trim(),
           urlImage,
-          widget.publishId.toString(),
+          arguments.toString(),
         ),
         body: Stack(
           children: [

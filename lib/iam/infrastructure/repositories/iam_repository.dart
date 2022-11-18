@@ -41,6 +41,7 @@ class IamRepository implements IamInterface {
         final pref = await SharedPreferences.getInstance();
         pref.setString('token', value_data['tokens']['accessToken']);
         pref.setInt('user_id', value_data['authenticatedUser']['id']);
+        pref.setString('username', value_data['authenticatedUser']['username']);
         pref.setString('email', value_data['authenticatedUser']['email']);
         pref.setBool('verified', value_data['authenticatedUser']['verified']);
         print(response.statusCode);

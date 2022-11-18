@@ -1,4 +1,6 @@
 import 'package:easy_story_flutter/iam/presentation/sign_in/login_screen_detail.dart';
+import 'package:easy_story_flutter/profile/presentation/profile/screens/profile_edit_screen.dart';
+import 'package:easy_story_flutter/profile/presentation/profile/screens/profile_screen_detail.dart';
 import 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/screens/update_publishing_screen_detail.dart';
 import 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/screens/write_publishing_screen_detail.dart';
 import 'package:easy_story_flutter/publishing/presentation/publishing_lists_posts/screens/publishing_user_post_details.dart';
@@ -79,6 +81,7 @@ class RouteGenerator {
         } catch (e) {
           return _errorRoute();
         }
+
       case '/bottom-navigation-states':
         try {
           return MaterialPageRoute(
@@ -88,6 +91,7 @@ class RouteGenerator {
         } catch (e) {
           return _errorRoute();
         }
+
       default:
         // the last option
         return _errorRoute();
