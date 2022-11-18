@@ -89,7 +89,7 @@ class RouteGenerator {
           return _errorRoute();
         }
       default:
-        // If there is no such named route in the switch statement, e.g. /third
+        // the last option
         return _errorRoute();
     }
   }
