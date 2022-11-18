@@ -179,9 +179,4 @@ Future<void> InsertSocialDependencies() async {
   serviceLocator.registerLazySingleton(
     () => SocialRemoteDataProvider(),
   );
-
-  // Common and core
-  serviceLocator.registerLazySingleton(
-    () => Connectivity(),
-  );
 }
