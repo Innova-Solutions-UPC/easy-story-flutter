@@ -16,7 +16,7 @@ class UpdatePublishingScreenDetailState
   TextEditingController description = new TextEditingController();
   TextEditingController content = new TextEditingController();
   String urlImage =
-      'https://www.fundacion-affinity.org/sites/default/files/los-10-sonidos-principales-del-perro.jpg';
+      'https://firebasestorage.googleapis.com/v0/b/easy-story-5040d.appspot.com/o/Profile%2Fdefault.jpg?alt=media&token=2b180ac9-ee6d-4a46-a4ae-1ebedd9449bf';
 
   TextEditingController hashtags = new TextEditingController();
 
