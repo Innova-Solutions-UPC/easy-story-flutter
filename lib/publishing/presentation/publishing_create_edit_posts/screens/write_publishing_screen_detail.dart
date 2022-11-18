@@ -1,5 +1,5 @@
 //import 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/widgets/publishing_description_field.dart';
-import 'package:easy_story_flutter/common/widgets/drawer_widget.dart';
+
 import 'package:flutter/material.dart';
 
 import '../widgets/publishing_widgets.dart';
@@ -31,7 +31,6 @@ class _WritePublishingScreenDetailState
           title: Text("Create your own Stories"),
           backgroundColor: Colors.transparent,
         ),
-        drawer: EasyStoryDrawerMenu(),
         backgroundColor: Colors.transparent,
         floatingActionButton: PublishingButtonCreate(
           context,

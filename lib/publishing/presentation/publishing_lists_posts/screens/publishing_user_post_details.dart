@@ -10,6 +10,8 @@ import 'package:flutter/rendering.dart';
 
 import '../../../../common/widgets/drawer_widget.dart';
 
+import '../../publishing_create_edit_posts/widgets/publishing_background.dart';
+
 //import '../../../../common/widgets/drawer_widget.dart';
 
 class PublishingUserPostDetails extends StatefulWidget {
