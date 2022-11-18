@@ -25,7 +25,7 @@ class _WritePublishingScreenDetailState
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: SignInBackgroundImage(),
+      decoration: PublishingBackgroundImage(),
       child: Scaffold(
         appBar: AppBar(
           title: Text("Create your own Stories"),
