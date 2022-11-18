@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../publishing/presentation/publishing_create_edit_posts/screens/update_publishing_screen_detail.dart';
+import '../widgets/bottom_navigation_bar.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -38,10 +39,8 @@ class RouteGenerator {
       case '/edit-publishing':
         try {
           return MaterialPageRoute(
-
               builder: (_) => UpdatePublishingScreenDetail(),
               settings: arguments);
-
         } catch (e) {
           // If args is not of the correct type, return an error page.
           // You can also throw an exception while in development.
@@ -59,6 +58,31 @@ class RouteGenerator {
         try {
           return MaterialPageRoute(
             builder: (_) => PublishingUserPostDetails(),
+            settings: arguments,
+          );
+        } catch (e) {
+          return _errorRoute();
+        }
+      case '/profile':
+        try {
+          return MaterialPageRoute(
+            builder: (_) => ProfileScreenDetail(),
+            settings: arguments,
+          );
+        } catch (e) {
+          return _errorRoute();
+        }
+      case '/edit-profile':
+        try {
+          return MaterialPageRoute(
+              builder: (_) => ProfileEditScreen(), settings: arguments);
+        } catch (e) {
+          return _errorRoute();
+        }
+      case '/bottom-navigation-states':
+        try {
+          return MaterialPageRoute(
+            builder: (_) => BottomNavBar(),
             settings: arguments,
           );
         } catch (e) {
@@ -84,7 +108,18 @@ class RouteGenerator {
   }
 }
 
-class ScreenEditArguments {
-  final int publishId;
-  ScreenEditArguments(this.publishId);
+class Error extends StatelessWidget {
+  const Error({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Error'),
+      ),
+      body: Center(
+        child: Text('ERROR'),
+      ),
+    );
+  }
 }
