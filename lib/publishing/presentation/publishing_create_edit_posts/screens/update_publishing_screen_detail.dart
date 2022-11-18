@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../common/widgets/drawer_widget.dart';
 import '../widgets/publishing_widgets.dart';
 
 class UpdatePublishingScreenDetail extends StatefulWidget {
@@ -30,7 +29,6 @@ class UpdatePublishingScreenDetailState
           title: Text("Edit this your own Stories "),
           backgroundColor: Colors.transparent,
         ),
-        drawer: EasyStoryDrawerMenu(),
         backgroundColor: Colors.transparent,
         floatingActionButton: PublishingButtonEdit(
           context,
