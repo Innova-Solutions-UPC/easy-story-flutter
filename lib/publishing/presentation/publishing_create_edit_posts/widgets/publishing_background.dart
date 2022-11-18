@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-BoxDecoration SignInBackgroundImage() {
+BoxDecoration PublishingBackgroundImage() {
   return BoxDecoration(
     image: DecorationImage(
         image:

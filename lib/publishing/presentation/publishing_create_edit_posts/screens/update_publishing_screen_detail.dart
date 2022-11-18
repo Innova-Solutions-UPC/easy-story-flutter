@@ -24,7 +24,7 @@ class UpdatePublishingScreenDetailState
   Widget build(BuildContext context) {
     var arguments = ModalRoute.of(context)?.settings.arguments;
     return Container(
-      decoration: SignInBackgroundImage(),
+      decoration: PublishingBackgroundImage(),
       child: Scaffold(
         appBar: AppBar(
           title: Text("Edit this your own Stories "),

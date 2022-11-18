@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../../../common/widgets/drawer_widget.dart';
+import '../../publishing_create_edit_posts/widgets/publishing_background.dart';
+import 'package:flutter/rendering.dart';
+
+import '../../../../common/widgets/drawer_widget.dart';
 
 //import '../../../../common/widgets/drawer_widget.dart';
 
@@ -81,7 +85,21 @@ class _PublishingUserPostDetailsState extends State<PublishingUserPostDetails> {
               } else if (snapshot.hasError) {
                 return Text(snapshot.error.toString());
               } else {
-                return CircularProgressIndicator();
+                return Container(
+                  decoration: PublishingBackgroundImage(),
+                  width: MediaQuery.of(context).size.width * 1,
+                  height: MediaQuery.of(context).size.height * 1,
+                  child: Center(
+                    child: SizedBox(
+                      width: 100,
+                      height: 100,
+                      child: CircularProgressIndicator(
+                        backgroundColor: Colors.purple,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                );
               }
             },
           ),
