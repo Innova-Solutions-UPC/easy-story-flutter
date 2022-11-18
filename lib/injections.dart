@@ -9,6 +9,13 @@ import 'package:easy_story_flutter/publishing/infrastructure/data_sources/write_
 import 'package:easy_story_flutter/publishing/infrastructure/data_sources/write_remote_data_provider.dart';
 import 'package:easy_story_flutter/publishing/infrastructure/repositories/write_repository.dart';
 import 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/bloc/write_bloc.dart';
+import 'package:easy_story_flutter/social/application/social_service.dart';
+import 'package:easy_story_flutter/social/infrastructure/data_sources/social_local_data_provider.dart';
+import 'package:easy_story_flutter/social/infrastructure/data_sources/social_remote_data_provider.dart';
+import 'package:easy_story_flutter/social/infrastructure/repositories/social_repository.dart';
+import 'package:easy_story_flutter/social/presentation/bookmarks/bloc/bloc.dart';
+import 'package:easy_story_flutter/social/presentation/comments/bloc/bloc.dart';
+import 'package:easy_story_flutter/social/presentation/qualifications/bloc/bloc.dart';
 import 'package:get_it/get_it.dart';
 
 final serviceLocator = GetIt.instance;
@@ -16,14 +23,16 @@ final serviceLocator = GetIt.instance;
 // From Top To bottom
 Future<void> init() async {
   //iam
-  iamDependencies();
+  InsertIamDependencies();
   //publishing
-  publishingDependencies();
+  InsertPublishingDependencies();
   //profile
-  profileDependencies();
+  InsertProfileDependencies();
+  //social
+  InsertSocialDependencies();
 }
 
-Future<void> iamDependencies() async {
+Future<void> InsertIamDependencies() async {
   // Presentation Layer - Blocs
   serviceLocator.registerFactory(
     () => IamDetailBloc(
@@ -62,7 +71,7 @@ Future<void> iamDependencies() async {
 }
 
 //publishing
-Future<void> publishingDependencies() async {
+Future<void> InsertPublishingDependencies() async {
   // Presentation Layer - Blocs
   serviceLocator.registerFactory(
     () => WriteDetailBloc(
@@ -96,7 +105,7 @@ Future<void> publishingDependencies() async {
 }
 
 //profile
-Future<void> profileDependencies() async {
+Future<void> InsertProfileDependencies() async {
   // Presentation Layer - Blocs
   serviceLocator.registerFactory(
     () => ProfileDetailBloc(
@@ -126,5 +135,53 @@ Future<void> profileDependencies() async {
   );
   serviceLocator.registerLazySingleton(
     () => ProfileRemoteDataProvider(),
+  );
+}
+
+Future<void> InsertSocialDependencies() async {
+  // Presentation Layer - Blocs
+  serviceLocator.registerFactory(
+    () => SocialCommentDetailBloc(
+      socialService: serviceLocator(),
+    ),
+  );
+  serviceLocator.registerFactory(
+    () => SocialQualificationDetailBloc(
+      socialService: serviceLocator(),
+    ),
+  );
+  serviceLocator.registerFactory(
+    () => SocialBookmarkDetailBloc(
+      socialService: serviceLocator(),
+    ),
+  );
+
+  // Application Layer - facades
+  serviceLocator.registerLazySingleton(
+    () => SocialService(
+      repository: serviceLocator(),
+    ),
+  );
+
+  // Infrastructure Layer
+  // repositories
+  serviceLocator.registerLazySingleton(
+    () => SocialRepository(
+      connectivity: serviceLocator(),
+      socialLocalDataProvider: serviceLocator(),
+      socialRemoteDataProvider: serviceLocator(),
+    ),
+  );
+  //data sources
+  serviceLocator.registerLazySingleton(
+    () => SocialLocalDataProvider(),
+  );
+  serviceLocator.registerLazySingleton(
+    () => SocialRemoteDataProvider(),
+  );
+
+  // Common and core
+  serviceLocator.registerLazySingleton(
+    () => Connectivity(),
   );
 }
