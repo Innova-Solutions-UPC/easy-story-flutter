@@ -6,6 +6,8 @@ import 'package:easy_story_flutter/social/infrastructure/models/qualification_mo
 import 'package:easy_story_flutter/social/infrastructure/repositories/social_repository.dart';
 import 'package:http/http.dart' as http;
 
+import '../infrastructure/models/post_model.dart';
+
 class SocialService {
   const SocialService({
     required this.repository,
@@ -17,8 +19,11 @@ class SocialService {
     return repository.bookmarkAPost(postId);
   }
 
-  Future<CommentModel> createAComment(String slug) async {
-    return repository.createAComment(slug);
+  Future<CommentModel> createAComment(
+    String slug,
+    String content,
+  ) async {
+    return repository.createAComment(slug, content);
   }
 
   Future<QualificationModel> createAQualification() async {
@@ -48,5 +53,13 @@ class SocialService {
   Future<List<QualificationModel>> getTheQualificationsByPostSlug(
       String slug) async {
     return repository.getTheQualificationsByPostSlug(slug);
+  }
+
+  Future<List<PostModel>> getAllThePosts() async {
+    return repository.getAllThePosts();
+  }
+
+  Future<PostModel> getAPost(String slug) async {
+    return repository.getAnPost(slug);
   }
 }
