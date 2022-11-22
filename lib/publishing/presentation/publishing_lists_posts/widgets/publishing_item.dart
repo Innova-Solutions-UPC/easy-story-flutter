@@ -1,5 +1,3 @@
-import 'package:easy_story_flutter/publishing/presentation/publishing_lists_posts/widgets/publishing_getIcon.dart';
-
 import 'package:flutter/material.dart';
 
 Widget PublishingItem(

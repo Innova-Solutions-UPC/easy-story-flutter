@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../widgets/publishing_widgets.dart';
 
 class UpdatePublishingScreenDetail extends StatefulWidget {
