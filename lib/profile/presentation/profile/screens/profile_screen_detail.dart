@@ -123,6 +123,26 @@ class ProfileScreenDetailState extends State<ProfileScreenDetail>
                                       height: 10,
                                     ),
                                     H1Label("Bio: Vivi en Lima"),
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pushNamed(
+                                              context, '/user-posts');
+                                        },
+                                        child: Text(
+                                          'My posts',
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          shadowColor: Colors.black,
+                                          primary: Color(0xff4c505b),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(25.0),
+                                          ),
+                                        )),
                                   ],
                                 );
                               } else if (snapshot.hasError) {
