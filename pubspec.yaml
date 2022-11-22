@@ -25,5 +25,6 @@ flutter:
   assets:
     - lib/iam/assets/sign-in.png
     - lib/publishing/assets/publishing_background_image.jpg
+    - lib/social/assets/social_background_image.jpg
     - lib/common/assets/reading.jpg
     - lib/profile/assets/profile_background.jpg
