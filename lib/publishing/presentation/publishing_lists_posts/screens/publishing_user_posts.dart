@@ -29,7 +29,6 @@ class _PublishingUserPostsState extends State<PublishingUserPosts> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: PublishingBackgroundImage(),
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.pink,

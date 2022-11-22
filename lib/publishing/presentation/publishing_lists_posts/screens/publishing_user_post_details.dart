@@ -1,18 +1,7 @@
-import 'package:easy_story_flutter/iam/presentation/sign_in/widgets/sign_in_background_image.dart';
 import 'package:easy_story_flutter/publishing/api/publishing_api.dart';
 import 'package:easy_story_flutter/publishing/infrastructure/models/write_model.dart';
+import 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/widgets/publishing_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
-import '../../../../common/widgets/drawer_widget.dart';
-import '../../publishing_create_edit_posts/widgets/publishing_background.dart';
-import 'package:flutter/rendering.dart';
-
-import '../../../../common/widgets/drawer_widget.dart';
-
-import '../../publishing_create_edit_posts/widgets/publishing_background.dart';
-
-//import '../../../../common/widgets/drawer_widget.dart';
 
 class PublishingUserPostDetails extends StatefulWidget {
   PublishingUserPostDetails({Key? key}) : super(key: key);
@@ -49,7 +38,6 @@ class _PublishingUserPostDetailsState extends State<PublishingUserPostDetails> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          decoration: SignInBackgroundImage(),
           child: FutureBuilder<WriteModel>(
             future: getPostDetails(arguments.toString()),
             builder: (context, snapshot) {
@@ -87,21 +75,7 @@ class _PublishingUserPostDetailsState extends State<PublishingUserPostDetails> {
               } else if (snapshot.hasError) {
                 return Text(snapshot.error.toString());
               } else {
-                return Container(
-                  decoration: PublishingBackgroundImage(),
-                  width: MediaQuery.of(context).size.width * 1,
-                  height: MediaQuery.of(context).size.height * 1,
-                  child: Center(
-                    child: SizedBox(
-                      width: 100,
-                      height: 100,
-                      child: CircularProgressIndicator(
-                        backgroundColor: Colors.purple,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ),
-                );
+                return CircularProgressIndicator();
               }
             },
           ),
