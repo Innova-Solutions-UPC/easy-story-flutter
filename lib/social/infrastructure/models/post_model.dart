@@ -10,7 +10,8 @@ class PostModel extends Post {
       required String image,
       required List hashtags,
       required String slug,
-      required int authorId})
+      required int authorId,
+      required String authorName})
       : super(
           id: id,
           title: title,
@@ -21,6 +22,7 @@ class PostModel extends Post {
           hashtags: hashtags,
           slug: slug,
           authorId: authorId,
+          authorName: authorName,
         );
   factory PostModel.fromJson(Map<dynamic, dynamic> json) {
     return PostModel(
@@ -32,6 +34,7 @@ class PostModel extends Post {
       image: json["image"],
       slug: json['slug'],
       authorId: json['author']['id'],
+      authorName: json['author']['username'],
       hashtags: List<dynamic>.from(json["hashtags"].map((x) => x)),
     );
   }
