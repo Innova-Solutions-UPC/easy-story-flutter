@@ -11,6 +11,7 @@ class Post extends Equatable {
     required this.hashtags,
     required this.slug,
     required this.authorId,
+    required this.authorName,
   });
 
   final int id;
@@ -20,6 +21,7 @@ class Post extends Equatable {
   final String content;
   final String image;
   final String slug;
+  final String authorName;
   final int authorId;
   final List<dynamic> hashtags;
   @override

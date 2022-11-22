@@ -15,6 +15,7 @@ dependencies:
   shared_preferences: ^2.0.15
   enum_to_string: ^2.0.1
   fancy_bottom_navigation: ^0.3.3
+  flutter_html: ^2.2.1
 
 
 dev_dependencies:

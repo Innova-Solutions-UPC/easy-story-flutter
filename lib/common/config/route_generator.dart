@@ -5,12 +5,13 @@ import 'package:easy_story_flutter/publishing/presentation/publishing_create_edi
 import 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/screens/write_publishing_screen_detail.dart';
 import 'package:easy_story_flutter/publishing/presentation/publishing_lists_posts/screens/publishing_user_post_details.dart';
 import 'package:easy_story_flutter/publishing/presentation/publishing_lists_posts/screens/publishing_user_posts.dart';
+import 'package:easy_story_flutter/social/presentation/comments/screens/social_post_comments_list.dart';
 import 'package:easy_story_flutter/social/presentation/posts/screens/social_feed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../publishing/presentation/publishing_create_edit_posts/screens/update_publishing_screen_detail.dart';
-import '../../social/presentation/posts/screens/social_post_detail.dart';
+import '../../social/presentation/posts/screens/social_feed_post.dart';
 import '../widgets/bottom_navigation_bar.dart';
 
 class RouteGenerator {
@@ -95,13 +96,21 @@ class RouteGenerator {
       case '/detail-feed-post':
         try {
           return MaterialPageRoute(
-            builder: (_) => SocialPostDetails(),
+            builder: (_) => SocialFeedPost(),
             settings: arguments,
           );
         } catch (e) {
           return _errorRoute();
         }
-
+      case '/comments':
+        try {
+          return MaterialPageRoute(
+            builder: (_) => SocialPostCommentsList(),
+            settings: arguments,
+          );
+        } catch (e) {
+          return _errorRoute();
+        }
       case '/bottom-navigation-states':
         try {
           return MaterialPageRoute(

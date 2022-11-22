@@ -101,7 +101,9 @@ class SocialRepository implements SocialInterface {
   Future<List<CommentModel>> getAllTheCommentsByPostSlug(String slug) async {
     final pref = await SharedPreferences.getInstance();
     final String? token = pref.getString('token');
-
+    var url2 = Uri.parse(url + 'posts/${slug}/comments/');
+    print(url2);
+    print(token);
     final response = await http.get(
       Uri.parse(url + 'posts/${slug}/comments/'),
       headers: <String, String>{
@@ -109,6 +111,7 @@ class SocialRepository implements SocialInterface {
         'Authorization': 'Bearer ${token}',
       },
     );
+    print(response);
     if (response.statusCode == HttpStatus.ok) {
       var list = json.decode(response.body)["items"] as List;
       print("La lista" + list.toString());
