@@ -5,10 +5,12 @@ import 'package:easy_story_flutter/publishing/presentation/publishing_create_edi
 import 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/screens/write_publishing_screen_detail.dart';
 import 'package:easy_story_flutter/publishing/presentation/publishing_lists_posts/screens/publishing_user_post_details.dart';
 import 'package:easy_story_flutter/publishing/presentation/publishing_lists_posts/screens/publishing_user_posts.dart';
+import 'package:easy_story_flutter/social/presentation/posts/screens/social_feed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../publishing/presentation/publishing_create_edit_posts/screens/update_publishing_screen_detail.dart';
+import '../../social/presentation/posts/screens/social_post_detail.dart';
 import '../widgets/bottom_navigation_bar.dart';
 
 class RouteGenerator {
@@ -78,6 +80,24 @@ class RouteGenerator {
         try {
           return MaterialPageRoute(
               builder: (_) => ProfileEditScreen(), settings: arguments);
+        } catch (e) {
+          return _errorRoute();
+        }
+      case '/social-feed':
+        try {
+          return MaterialPageRoute(
+            builder: (_) => SocialFeed(),
+            settings: arguments,
+          );
+        } catch (e) {
+          return _errorRoute();
+        }
+      case '/detail-feed-post':
+        try {
+          return MaterialPageRoute(
+            builder: (_) => SocialPostDetails(),
+            settings: arguments,
+          );
         } catch (e) {
           return _errorRoute();
         }
