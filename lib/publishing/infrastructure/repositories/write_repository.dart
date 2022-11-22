@@ -153,7 +153,7 @@ class WriteRepository implements WriteInterface {
     final String? token = pref.getString('token');
     final int? userId = pref.getInt('user_id');
     final response = await http.get(
-      Uri.parse(url + 'posts?page=1&limit=20&author=${userId.toString()}'),
+      Uri.parse(url + 'user-posts?page=1&limit=20'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer ${token}',
