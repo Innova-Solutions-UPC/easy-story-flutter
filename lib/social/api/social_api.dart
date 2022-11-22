@@ -5,14 +5,19 @@ import 'package:easy_story_flutter/social/infrastructure/models/comment_model.da
 import 'package:easy_story_flutter/social/infrastructure/models/qualification_model.dart';
 import 'package:http/http.dart' as http;
 
+import '../infrastructure/models/post_model.dart';
+
 class SocialApi {
   final SocialService socialService = serviceLocator<SocialService>();
   Future<BookmarkModel> bookmarkAPost(int postId) async {
     return socialService.bookmarkAPost(postId);
   }
 
-  Future<CommentModel> createAComment(String slug) async {
-    return socialService.createAComment(slug);
+  Future<CommentModel> createAComment(
+    String slug,
+    String content,
+  ) async {
+    return socialService.createAComment(slug, content);
   }
 
   Future<QualificationModel> createAQualification() async {
@@ -42,5 +47,13 @@ class SocialApi {
   Future<List<QualificationModel>> getTheQualificationsByPostSlug(
       String slug) async {
     return socialService.getTheQualificationsByPostSlug(slug);
+  }
+
+  Future<List<PostModel>> getAllThePosts() async {
+    return socialService.getAllThePosts();
+  }
+
+  Future<PostModel> getAPost(String slug) async {
+    return socialService.getAPost(slug);
   }
 }
