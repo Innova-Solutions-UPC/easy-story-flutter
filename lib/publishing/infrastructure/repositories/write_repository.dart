@@ -35,7 +35,7 @@ class WriteRepository implements WriteInterface {
   ) async {
     final pref = await SharedPreferences.getInstance();
     var token = await pref.getString('token');
-
+    print("La imagen del link " + image);
     if (connectivity.isConnected) {
       try {
         print('hi');
@@ -53,8 +53,7 @@ class WriteRepository implements WriteInterface {
               "description": description,
               "status": status,
               "content": content,
-              "image":
-                  "https://www.nationalgeographic.com.es/medio/2018/02/27/perros__1280x720.jpg",
+              "image": image,
               "hashtags": data,
             },
           ),

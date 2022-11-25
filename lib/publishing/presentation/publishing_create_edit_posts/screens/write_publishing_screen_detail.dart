@@ -1,6 +1,9 @@
 //import 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/widgets/publishing_description_field.dart';
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../widgets/publishing_widgets.dart';
 
@@ -17,9 +20,9 @@ class _WritePublishingScreenDetailState
   TextEditingController title = new TextEditingController();
   TextEditingController description = new TextEditingController();
   TextEditingController content = new TextEditingController();
-  String urlImage =
-      'https://firebasestorage.googleapis.com/v0/b/easy-story-5040d.appspot.com/o/Profile%2Fdefault.jpg?alt=media&token=2b180ac9-ee6d-4a46-a4ae-1ebedd9449bf';
+  String urlImage = "";
 
+  dynamic data;
   TextEditingController hashtags = new TextEditingController();
 
   @override
@@ -37,7 +40,7 @@ class _WritePublishingScreenDetailState
           description.text.trim(),
           content.text.trim(),
           hashtags.text.trim(),
-          urlImage,
+          data,
         ),
         body: Stack(
           children: [
@@ -73,7 +76,7 @@ class _WritePublishingScreenDetailState
                     SizedBox(
                       height: 30,
                     ),
-                    PublishingImage(urlImage),
+                    PublishingImage(data, urlImage),
                   ],
                 ),
               ),

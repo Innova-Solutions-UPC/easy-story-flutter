@@ -25,10 +25,10 @@ class _SocialPostCommentsListState extends State<SocialPostCommentsList> {
   Widget build(BuildContext context) {
     var arguments = ModalRoute.of(context)?.settings.arguments;
     return Container(
+      decoration: backGroundDecoration(),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
-          decoration: backGroundDecoration(),
           child: FutureBuilder<List<CommentModel>>(
               future: getPostComments(arguments.toString()),
               builder: (context, snapshot) {

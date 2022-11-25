@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "454108586040",
+    "project_id": "easy-story-5040d",
+    "storage_bucket": "easy-story-5040d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454108586040:android:e87f7c6cd9d37d51c446cd",
+        "android_client_info": {
+          "package_name": "com.example.easy_story_flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "454108586040-6f69k9g37op3fnlsj0qr4jldfpvs3nal.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYvvOI4FILFlSiD4I_0wPoZ_hiI1YK5g0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "454108586040-6f69k9g37op3fnlsj0qr4jldfpvs3nal.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

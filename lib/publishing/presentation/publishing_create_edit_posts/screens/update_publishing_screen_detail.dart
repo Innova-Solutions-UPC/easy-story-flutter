@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../common/widgets/box_decoration.dart';
 import '../widgets/publishing_widgets.dart';
@@ -16,9 +19,8 @@ class UpdatePublishingScreenDetailState
   TextEditingController title = new TextEditingController();
   TextEditingController description = new TextEditingController();
   TextEditingController content = new TextEditingController();
-  String urlImage =
-      'https://firebasestorage.googleapis.com/v0/b/easy-story-5040d.appspot.com/o/Profile%2Fdefault.jpg?alt=media&token=2b180ac9-ee6d-4a46-a4ae-1ebedd9449bf';
-
+  String urlImage = "";
+  dynamic data;
   TextEditingController hashtags = new TextEditingController();
 
   @override
@@ -75,7 +77,7 @@ class UpdatePublishingScreenDetailState
                     SizedBox(
                       height: 30,
                     ),
-                    PublishingImage(urlImage),
+                    PublishingImage(data, urlImage),
                   ],
                 ),
               ),
