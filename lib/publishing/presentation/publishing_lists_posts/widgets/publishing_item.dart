@@ -1,4 +1,9 @@
+import 'package:easy_story_flutter/publishing/infrastructure/models/write_model.dart';
 import 'package:flutter/material.dart';
+
+// Future<WriteModel> getComments(){
+
+// }
 
 Widget PublishingItem(
   context,

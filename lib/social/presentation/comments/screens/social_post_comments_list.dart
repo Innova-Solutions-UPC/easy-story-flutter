@@ -1,7 +1,7 @@
+import 'package:easy_story_flutter/common/widgets/box_decoration.dart';
 import 'package:easy_story_flutter/social/infrastructure/models/comment_model.dart';
 import 'package:flutter/material.dart';
 import '../../../api/social_api.dart';
-import '../../posts/widgets/social_background.dart';
 import '../widgets/social_comment_item.dart';
 
 class SocialPostCommentsList extends StatefulWidget {
@@ -25,10 +25,10 @@ class _SocialPostCommentsListState extends State<SocialPostCommentsList> {
   Widget build(BuildContext context) {
     var arguments = ModalRoute.of(context)?.settings.arguments;
     return Container(
-      decoration: SocialBackgroundImage(),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
+          decoration: backGroundDecoration(),
           child: FutureBuilder<List<CommentModel>>(
               future: getPostComments(arguments.toString()),
               builder: (context, snapshot) {
@@ -50,7 +50,6 @@ class _SocialPostCommentsListState extends State<SocialPostCommentsList> {
                   return Text(snapshot.error.toString());
                 } else {
                   return Container(
-                    decoration: SocialBackgroundImage(),
                     width: MediaQuery.of(context).size.width * 1,
                     height: MediaQuery.of(context).size.height * 1,
                     child: Center(

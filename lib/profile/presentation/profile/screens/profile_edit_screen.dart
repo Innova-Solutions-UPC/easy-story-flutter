@@ -1,3 +1,4 @@
+import 'package:easy_story_flutter/common/widgets/box_decoration.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_story_flutter/profile/presentation/profile/widgets/profile_widgets.dart';
 
@@ -18,7 +19,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
     TextEditingController password = new TextEditingController();
     TextEditingController bio = new TextEditingController();
     return Container(
-      decoration: ProfileBackgroundImage(),
+      decoration: backGroundDecoration(),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(

@@ -1,3 +1,4 @@
+import 'package:easy_story_flutter/common/widgets/box_decoration.dart';
 import 'package:easy_story_flutter/social/api/social_api.dart';
 import 'package:easy_story_flutter/social/infrastructure/models/post_model.dart';
 import 'package:easy_story_flutter/social/presentation/posts/widgets/social_widgets.dart';
@@ -26,8 +27,9 @@ class _SocialFeedState extends State<SocialFeed> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: SocialBackgroundImage(),
+      decoration: backGroundDecoration(),
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         body: Container(
           child: FutureBuilder<List<PostModel>>(
               future: posts,
@@ -53,7 +55,6 @@ class _SocialFeedState extends State<SocialFeed> {
                   return Text(snapshot.error.toString());
                 } else {
                   return Container(
-                    decoration: SocialBackgroundImage(),
                     width: MediaQuery.of(context).size.width * 1,
                     height: MediaQuery.of(context).size.height * 1,
                     child: Center(

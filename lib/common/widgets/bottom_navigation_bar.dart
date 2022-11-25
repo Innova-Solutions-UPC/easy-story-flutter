@@ -30,8 +30,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     : Error(),
       ),
       bottomNavigationBar: FancyBottomNavigation(
-        circleColor: Colors.purple,
-        inactiveIconColor: Colors.purple,
+        circleColor: Colors.blueGrey,
+        inactiveIconColor: Colors.blueGrey,
         tabs: [
           TabData(
             iconData: Icons.home,
@@ -40,14 +40,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
           TabData(
             iconData: Icons.account_circle,
             title: "Profile",
-          ),
-          TabData(
-            iconData: Icons.bookmarks,
-            title: "My library",
-          ),
-          TabData(
-            iconData: Icons.settings,
-            title: "Settings",
           ),
         ],
         onTabChangedListener: (position) {

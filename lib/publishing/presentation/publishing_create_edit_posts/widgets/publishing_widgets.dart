@@ -1,4 +1,3 @@
-export 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/widgets/publishing_background.dart';
 export 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/widgets/publishing_content_field.dart';
 export 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/widgets/publishing_hashtags_field.dart';
 export 'package:easy_story_flutter/publishing/presentation/publishing_create_edit_posts/widgets/publishing_image.dart';

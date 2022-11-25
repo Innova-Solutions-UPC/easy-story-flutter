@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './injections.dart' as di;
 import 'package:easy_story_flutter/common/config/route_generator.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
   // initialize dependencies injections

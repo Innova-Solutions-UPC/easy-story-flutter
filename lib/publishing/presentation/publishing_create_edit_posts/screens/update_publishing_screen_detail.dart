@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../common/widgets/box_decoration.dart';
 import '../widgets/publishing_widgets.dart';
 
 class UpdatePublishingScreenDetail extends StatefulWidget {
@@ -24,7 +25,7 @@ class UpdatePublishingScreenDetailState
   Widget build(BuildContext context) {
     var arguments = ModalRoute.of(context)?.settings.arguments;
     return Container(
-      decoration: PublishingBackgroundImage(),
+      decoration: backGroundDecoration(),
       child: Scaffold(
         appBar: AppBar(
           title: Text("Edit this your own Stories "),

@@ -16,6 +16,12 @@ dependencies:
   enum_to_string: ^2.0.1
   fancy_bottom_navigation: ^0.3.3
   flutter_html: ^2.2.1
+  flutter_gherkin: ^2.0.0
+  glob: ^2.1.0
+  flutter_color: ^2.0.0
+  flutter_quill: ^4.2.3
+  firebase_core: ^2.3.0
+  firebase_storage: ^11.0.6
 
 
 dev_dependencies:
@@ -23,9 +29,4 @@ dev_dependencies:
     sdk: flutter
 flutter:
   uses-material-design: true
-  assets:
-    - lib/iam/assets/sign-in.png
-    - lib/publishing/assets/publishing_background_image.jpg
-    - lib/social/assets/social_background_image.jpg
-    - lib/common/assets/reading.jpg
-    - lib/profile/assets/profile_background.jpg
+ 

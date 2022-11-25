@@ -1,10 +1,9 @@
+import 'package:easy_story_flutter/common/widgets/box_decoration.dart';
 import 'package:easy_story_flutter/social/api/social_api.dart';
 import 'package:easy_story_flutter/social/infrastructure/models/post_model.dart';
 import 'package:easy_story_flutter/social/presentation/comments/screens/social_post_comments_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-
-import '../widgets/social_background.dart';
 
 class SocialFeedPost extends StatefulWidget {
   const SocialFeedPost({Key? key}) : super(key: key);
@@ -30,7 +29,7 @@ class _SocialFeedPostState extends State<SocialFeedPost> {
   Widget build(BuildContext context) {
     var arguments = ModalRoute.of(context)?.settings.arguments;
     return Container(
-      decoration: SocialBackgroundImage(),
+      decoration: backGroundDecoration(),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
@@ -89,7 +88,6 @@ class _SocialFeedPostState extends State<SocialFeedPost> {
                   return Text(snapshot.error.toString());
                 } else {
                   return Container(
-                    decoration: SocialBackgroundImage(),
                     width: MediaQuery.of(context).size.width * 1,
                     height: MediaQuery.of(context).size.height * 1,
                     child: Center(

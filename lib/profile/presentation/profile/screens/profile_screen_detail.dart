@@ -1,3 +1,4 @@
+import 'package:easy_story_flutter/common/widgets/box_decoration.dart';
 import 'package:easy_story_flutter/profile/api/profile_api.dart';
 import 'package:easy_story_flutter/profile/infrastructure/models/profile_model.dart';
 import 'package:easy_story_flutter/profile/presentation/profile/widgets/profile_widgets.dart';
@@ -19,7 +20,7 @@ class ProfileScreenDetailState extends State<ProfileScreenDetail>
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: ProfileBackgroundImage(),
+      decoration: backGroundDecoration(),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
@@ -39,7 +40,7 @@ class ProfileScreenDetailState extends State<ProfileScreenDetail>
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CircleAvatar(
-                              backgroundColor: Color.fromARGB(255, 134, 34, 26),
+                              backgroundColor: Colors.blueGrey,
                               child: IconButton(
                                 color: Colors.white,
                                 icon: const Icon(Icons.logout),
@@ -63,7 +64,7 @@ class ProfileScreenDetailState extends State<ProfileScreenDetail>
                               width: 20,
                             ),
                             CircleAvatar(
-                              backgroundColor: Color.fromARGB(255, 0, 26, 141),
+                              backgroundColor: Color.fromARGB(255, 14, 39, 150),
                               child: IconButton(
                                 color: Colors.white,
                                 icon: const Icon(Icons.edit),
@@ -81,15 +82,9 @@ class ProfileScreenDetailState extends State<ProfileScreenDetail>
                           ],
                         ),
                       ),
-                      CircleAvatar(
-                        radius: 100.0,
-                        backgroundImage: NetworkImage(
-                            "https://media.istockphoto.com/photos/portrait-of-successful-black-male-modern-day-student-holding-picture-id1311634222?k=20&m=1311634222&s=612x612&w=0&h=1a0XDWnZNPjk_5n7maZdzowaDfBcBohwoiZZF69qS9A="),
-                        backgroundColor: Colors.transparent,
-                      ),
                       Card(
                           elevation: 10,
-                          color: Color.fromARGB(110, 1, 238, 255),
+                          color: Colors.transparent,
                           shadowColor: Colors.black,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(6)),
@@ -101,6 +96,16 @@ class ProfileScreenDetailState extends State<ProfileScreenDetail>
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    CircleAvatar(
+                                      radius: 90.0,
+                                      backgroundImage: NetworkImage(snapshot
+                                          .data!.imageProfile
+                                          .toString()),
+                                      backgroundColor: Colors.transparent,
+                                    ),
                                     SizedBox(
                                       height: 10,
                                     ),

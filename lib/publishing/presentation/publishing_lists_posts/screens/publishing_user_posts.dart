@@ -1,10 +1,9 @@
 //import 'package:easy_story_flutter/common/widgets/drawer_widget.dart';
+import 'package:easy_story_flutter/common/widgets/box_decoration.dart';
 import 'package:easy_story_flutter/publishing/api/publishing_api.dart';
 import 'package:easy_story_flutter/publishing/infrastructure/models/write_model.dart';
 import 'package:easy_story_flutter/publishing/presentation/publishing_lists_posts/widgets/publishing_item.dart';
 import 'package:flutter/material.dart';
-
-import '../../publishing_create_edit_posts/widgets/publishing_background.dart';
 
 class PublishingUserPosts extends StatefulWidget {
   const PublishingUserPosts({Key? key}) : super(key: key);
@@ -31,7 +30,7 @@ class _PublishingUserPostsState extends State<PublishingUserPosts> {
     return Container(
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.blue,
           onPressed: () {
             Navigator.pushNamed(context, '/write-publishing');
           },
@@ -40,6 +39,7 @@ class _PublishingUserPostsState extends State<PublishingUserPosts> {
           ),
         ),
         body: Container(
+          decoration: backGroundDecoration(),
           child: FutureBuilder<List<WriteModel>>(
               future: posts,
               builder: (context, snapshot) {
@@ -62,7 +62,6 @@ class _PublishingUserPostsState extends State<PublishingUserPosts> {
                   return Text(snapshot.error.toString());
                 } else {
                   return Container(
-                    decoration: PublishingBackgroundImage(),
                     width: MediaQuery.of(context).size.width * 1,
                     height: MediaQuery.of(context).size.height * 1,
                     child: Center(

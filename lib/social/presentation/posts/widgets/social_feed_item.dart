@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_color/flutter_color.dart';
 
 Widget SocialFeedItem(
   context,
@@ -11,47 +12,36 @@ Widget SocialFeedItem(
   String slug,
   bool isBookmarked,
 ) {
-  return Card(
-    elevation: 1.0,
-    margin: EdgeInsets.only(bottom: 2.0, top: 14.0, left: 15.0, right: 15.0),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-    semanticContainer: true,
-    clipBehavior: Clip.antiAliasWithSaveLayer,
-    child: Column(
-      children: [
-        Image.network(
-          image.isEmpty
-              ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4vgxRDCfxDtQKPA7Q_-AuKsf44qb0LHcydDgRVOQB&s"
-              : image,
-          fit: BoxFit.fill,
-        ),
-        ListTile(
-          title: Text(title),
-          subtitle: Text(description),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            IconButton(
-              icon: (isBookmarked)
-                  ? Icon(Icons.bookmark)
-                  : Icon(Icons.bookmark_add_outlined),
-              onPressed: () async {
-                //bookmark
-              },
+  return Container(
+      padding: new EdgeInsets.all(32.0),
+      height: 350,
+      child: GestureDetector(
+        onTap: () async => {
+          Navigator.pushNamed(context, '/detail-feed-post', arguments: slug)
+        },
+        child: Card(
+          color: HexColor("193f6c "),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: Center(
+            child: Column(
+              children: [
+                Flexible(
+                  child: Image.network((image.isEmpty)
+                      ? "https://firebasestorage.googleapis.com/v0/b/easy-story-5040d.appspot.com/o/Books-covers%2FPhotoRoom_20220124_144152.png?alt=media&token=993d992f-8468-49b5-834a-17bfd7f7ec1f"
+                      : image),
+                ),
+                Card(
+                  margin: EdgeInsets.all(35.0),
+                  color: HexColor("0844a6 "),
+                  child: ListTile(
+                    title: Text(title),
+                  ),
+                ),
+              ],
             ),
-            IconButton(
-              icon: Icon(Icons.info),
-              onPressed: () async {
-                Navigator.pushNamed(context, '/detail-feed-post',
-                    arguments: slug);
-              },
-            )
-          ],
-        )
-      ],
-    ),
-  );
+          ),
+        ),
+      ));
 }
